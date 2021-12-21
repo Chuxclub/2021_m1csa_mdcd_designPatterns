@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -61,7 +59,14 @@ public class ProductOwner {
 	public SprintBackLog productToSprintBacklogStrategieOne() {
 		List<UserStory> aFiltrer = new ArrayList<UserStory>(this.sonBackLog.getUserStories());
 		
-		// to be completed
+		FilterComplexity1 filterComplexity1 = new FilterComplexity1();
+		FilterBusinessValue1 filterBusinessValue1 = new FilterBusinessValue1();
+		FilterStoryType1 filterStoryType1 = new FilterStoryType1();
+
+		filterComplexity1.setNextFilter(filterBusinessValue1);
+		filterBusinessValue1.setNextFilter(filterStoryType1);
+
+		filterComplexity1.applyFilter(aFiltrer);
 		
 		return new SprintBackLog(99, aFiltrer);
 	}
@@ -98,8 +103,15 @@ public class ProductOwner {
 	
 	public SprintBackLog productToSprintBacklogStrategieTwo() {
 		List<UserStory> aFiltrer = new ArrayList<UserStory>(this.sonBackLog.getUserStories());
-		
-		// to be completed
+
+		FilterStoryType2 filterStoryType2 = new FilterStoryType2();
+		FilterBusinessValue2 filterBusinessValue2 = new FilterBusinessValue2();
+		FilterComplexity2 filterComplexity2 = new FilterComplexity2();
+
+		filterStoryType2.setNextFilter(filterBusinessValue2);
+		filterBusinessValue2.setNextFilter(filterComplexity2);
+
+		filterStoryType2.applyFilter(aFiltrer);
 		
 		return new SprintBackLog(99, aFiltrer);
 	}
