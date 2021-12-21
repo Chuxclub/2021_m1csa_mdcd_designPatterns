@@ -7,6 +7,8 @@ public abstract class Filter {
         this.nextFilter = nextFilter;
     }
 
+    public abstract void userStoryToRemove(List<UserStory> aFiltrer);
+
     public void applyFilter(List<UserStory> aFiltrer){
         if(this.nextFilter != null)
             this.nextFilter.applyFilter(aFiltrer);

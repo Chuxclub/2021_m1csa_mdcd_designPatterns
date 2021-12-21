@@ -7,8 +7,14 @@ public class FilterComplexity extends Filter {
         this.complexity = complexity;
     }
 
+    @Override
     public void applyFilter(List<UserStory> aFiltrer){
-        aFiltrer.removeIf(user -> user.getComplexiteEnPoints() > this.complexity);
+        userStoryToRemove(aFiltrer);
         super.applyFilter(aFiltrer);
+    }
+
+    @Override
+    public void userStoryToRemove(List<UserStory> aFiltrer){
+        aFiltrer.removeIf(user -> user.getComplexiteEnPoints() > this.complexity);
     }
 }

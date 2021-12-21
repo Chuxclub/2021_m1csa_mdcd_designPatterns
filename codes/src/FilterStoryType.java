@@ -6,8 +6,15 @@ public class FilterStoryType extends Filter {
     public FilterStoryType(TypeUserStory storyType){
         this.storyType = storyType;
     }
+
+    @Override
     public void applyFilter(List<UserStory> aFiltrer){
-        aFiltrer.removeIf(user -> user.getType() == storyType);
+        userStoryToRemove(aFiltrer);
         super.applyFilter(aFiltrer);
+    }
+
+    @Override
+    public void userStoryToRemove(List<UserStory> aFiltrer){
+        aFiltrer.removeIf(user -> user.getType() == this.storyType);
     }
 }
