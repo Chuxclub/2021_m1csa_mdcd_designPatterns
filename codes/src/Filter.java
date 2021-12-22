@@ -10,6 +10,7 @@ public abstract class Filter {
     public abstract void userStoryToRemove(List<UserStory> aFiltrer);
 
     public void applyFilter(List<UserStory> aFiltrer){
+        userStoryToRemove(aFiltrer);
         if(this.nextFilter != null)
             this.nextFilter.applyFilter(aFiltrer);
     }

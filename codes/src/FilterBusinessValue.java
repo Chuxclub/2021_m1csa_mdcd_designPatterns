@@ -8,12 +8,6 @@ public class FilterBusinessValue extends Filter {
     }
 
     @Override
-    public void applyFilter(List<UserStory> aFiltrer){
-        userStoryToRemove(aFiltrer);
-        super.applyFilter(aFiltrer);
-    }
-
-    @Override
     public void userStoryToRemove(List<UserStory> aFiltrer){
         aFiltrer.removeIf(user -> user.getBusinessValueEnEuro() < this.businessValue);
     }
